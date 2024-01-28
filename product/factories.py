@@ -8,6 +8,3 @@ class ProductFactory(DjangoModelFactory):
         model = Product
 
     name = factory.sequence(lambda n: "product_{}".format(n))
-
-
-

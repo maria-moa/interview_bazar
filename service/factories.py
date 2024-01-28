@@ -8,6 +8,3 @@ class ServiceFactory(DjangoModelFactory):
         model = Service
 
     name = factory.sequence(lambda n: "service_{}".format(n))
-
-
-

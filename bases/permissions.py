@@ -9,11 +9,6 @@ class ReadOnlyPermission(BasePermission):
 
 class IsAdminOrReadonlyPermission(BasePermission):
     def has_permission(self, request, view):
-        return (
-                ReadOnlyPermission.has_permission(request=request, view=view)
-                or IsAdminUser().has_permission(request=request, view=view)
+        return ReadOnlyPermission.has_permission(request=request, view=view) or IsAdminUser().has_permission(
+            request=request, view=view
         )
-
-
-
-

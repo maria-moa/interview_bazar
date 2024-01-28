@@ -8,6 +8,3 @@ class WholeSaleFactory(DjangoModelFactory):
         model = WholeSale
 
     name = factory.sequence(lambda n: "wholesale_{}".format(n))
-
-
-

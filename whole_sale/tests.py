@@ -22,22 +22,23 @@ class ProductCRUDTests(TestCase):
 
     def test_get_products(self):
         expected_response = {
-            'count': 2,
-            'next': None,
-            'previous': None,
-            'results': [
+            "count": 2,
+            "next": None,
+            "previous": None,
+            "results": [
                 {
-                    'id': self.wholesale_2.id,
-                    'name': self.wholesale_2.name,
-                    'created_at': self.f_time_str,
-                    'updated_at': self.f_time_str,
+                    "id": self.wholesale_2.id,
+                    "name": self.wholesale_2.name,
+                    "created_at": self.f_time_str,
+                    "updated_at": self.f_time_str,
                 },
                 {
-                    'id': self.wholesale_1.id,
-                    'name': self.wholesale_1.name,
-                    'created_at': self.f_time_str,
-                    'updated_at': self.f_time_str,
-                }],
+                    "id": self.wholesale_1.id,
+                    "name": self.wholesale_1.name,
+                    "created_at": self.f_time_str,
+                    "updated_at": self.f_time_str,
+                },
+            ],
         }
 
         response = self.client.get("/api/v1/wholesales/")

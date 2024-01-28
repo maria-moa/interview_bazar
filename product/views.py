@@ -10,6 +10,7 @@ class ProductListCreateView(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
+
 class ProductRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
 
     permission_classes = [IsAdminOrReadonlyPermission]
@@ -18,4 +19,3 @@ class ProductRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
 
     lookup_field = "id"
     lookup_url_kwarg = "product_id"
-

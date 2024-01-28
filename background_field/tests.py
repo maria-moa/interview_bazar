@@ -35,25 +35,19 @@ class ProductCRUDTests(TestCase):
             response_post = self.client.post(
                 "/api/v1/background_field/",
                 {
-                    "producer": [
-                        self.product_1.id, self.product_2.id
-                    ],
-                    "whole_sale": [
-                        self.wholesale_1.id
-                    ],
-                    "service": [
-                        self.service_2.id
-                    ]
+                    "producer": [self.product_1.id, self.product_2.id],
+                    "whole_sale": [self.wholesale_1.id],
+                    "service": [self.service_2.id],
                 },
             )
         self.assertEqual(response_post.status_code, 201)
 
         expected_response_post = {
-            'producer': [self.product_2.id, self.product_1.id],
-            'whole_sale': [self.wholesale_1.id],
-            'service': [self.service_2.id],
+            "producer": [self.product_2.id, self.product_1.id],
+            "whole_sale": [self.wholesale_1.id],
+            "service": [self.service_2.id],
             "created_at": self.f_time_str,
-            "updated_at": self.f_time_str
+            "updated_at": self.f_time_str,
         }
 
         response_dict_post = response_post.json()
@@ -63,32 +57,38 @@ class ProductCRUDTests(TestCase):
         self.maxDiff = None
         self.assertEqual(response_dict_post, expected_response_post)
 
-
         expected_response_get = {
-            'id': id,
-            'producer': [{
-                'id': self.product_2.id,
-                "created_at": self.f_time_str,
-                "updated_at": self.f_time_str,
-                'name': self.product_2.name
-            }, {
-                'id': self.product_1.id,
-                "created_at": self.f_time_str,
-                "updated_at": self.f_time_str,
-                'name': self.product_1.name
-            }],
-            'whole_sale': [{
-                'id': self.wholesale_1.id,
-                "created_at": self.f_time_str,
-                "updated_at": self.f_time_str,
-                'name': self.wholesale_1.name
-            }],
-            'service': [{
-                'id': self.service_2.id,
-                "created_at": self.f_time_str,
-                "updated_at": self.f_time_str,
-                'name': self.service_2.name
-            }],
+            "id": id,
+            "producer": [
+                {
+                    "id": self.product_2.id,
+                    "created_at": self.f_time_str,
+                    "updated_at": self.f_time_str,
+                    "name": self.product_2.name,
+                },
+                {
+                    "id": self.product_1.id,
+                    "created_at": self.f_time_str,
+                    "updated_at": self.f_time_str,
+                    "name": self.product_1.name,
+                },
+            ],
+            "whole_sale": [
+                {
+                    "id": self.wholesale_1.id,
+                    "created_at": self.f_time_str,
+                    "updated_at": self.f_time_str,
+                    "name": self.wholesale_1.name,
+                }
+            ],
+            "service": [
+                {
+                    "id": self.service_2.id,
+                    "created_at": self.f_time_str,
+                    "updated_at": self.f_time_str,
+                    "name": self.service_2.name,
+                }
+            ],
             "created_at": self.f_time_str,
             "updated_at": self.f_time_str,
         }
@@ -102,49 +102,25 @@ class ProductCRUDTests(TestCase):
         self.maxDiff = None
         self.assertEqual(response_gey_by_id.json(), expected_response_get)
 
-
-
-
         with freeze_time(self.f_time_str):
             response_put = self.client.put(
                 "/api/v1/background_field/{}".format(id),
-                {
-                    "producer": [
-                        self.product_1.id
-                    ],
-                    "whole_sale": [
-                        self.wholesale_2.id
-                    ],
-                    "service": [
-                        self.service_1.id
-                    ]
-                },
+                {"producer": [self.product_1.id], "whole_sale": [self.wholesale_2.id], "service": [self.service_1.id]},
             )
 
         self.assertEqual(response_put.status_code, 200, msg=response_put.json())
 
         expected_response_put = {
             "id": id,
-            'producer': [self.product_1.id],
-            'whole_sale': [self.wholesale_2.id],
-            'service': [self.service_1.id],
+            "producer": [self.product_1.id],
+            "whole_sale": [self.wholesale_2.id],
+            "service": [self.service_1.id],
             "created_at": self.f_time_str,
-            "updated_at": self.f_time_str
+            "updated_at": self.f_time_str,
         }
 
         self.maxDiff = None
         self.assertEqual(response_put.json(), expected_response_put)
 
-
         response_delete = self.client.delete("/api/v1/background_field/{}".format(id))
         self.assertEqual(response_delete.status_code, 204)
-
-
-
-
-
-
-
-
-
-
