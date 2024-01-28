@@ -381,5 +381,3 @@ pyrightconfig.json
 .idea
 celerybeat-schedule.db
 db.sqlite3
-todo
-sdass

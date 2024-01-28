@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+
+  app:
+    build: .
+    command: sh -c "./entry.sh"
+    restart: on-failure
+    env_file: .env.docker
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: mysql:8.1.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: bazar_db_pw
+      MYSQL_DATABASE: bazar_db_name
+      MYSQL_USER: bazar_db_user
+      MYSQL_PASSWORD: bazar_db_pw_1
+    ports:
+      - "1800:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  redis:
+    image: redis:latest
+    restart: always
+    ports:
+      - "1900:6379"
+    environment:
+     - REDIS_REPLICATION_MODE=master
+    volumes:
+      - redis:/redis
+    command: redis-server
+
+volumes:
+  db_data:
+  redis:
