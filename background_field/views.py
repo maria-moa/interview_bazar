@@ -22,8 +22,7 @@ class RetrieveMyBackGroundFieldView(generics.RetrieveAPIView):
 
     def get_object(self):
         return (
-            BackGroundField.objects
-            .filter(user=self.request.user)
+            BackGroundField.objects.filter(user=self.request.user)
             .prefetch_related("producer", "whole_sale", "service")
             .first()
         )

@@ -6,12 +6,12 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('background_field', '0002_alter_backgroundfield_user'),
+        ("background_field", "0002_alter_backgroundfield_user"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='backgroundfield',
-            options={'ordering': ['-id']},
+            name="backgroundfield",
+            options={"ordering": ["-id"]},
         ),
     ]

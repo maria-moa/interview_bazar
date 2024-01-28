@@ -14,5 +14,3 @@ class UserFactory(DjangoModelFactory):
     last_name = "Doe"
     email = factory.sequence(lambda n: "test{}@example.com".format(n))
     password = "password"
-
-

@@ -28,7 +28,3 @@ class BackGroundFieldFactory(DjangoModelFactory):
         if not create or not extracted:
             return
         self.services.add(*extracted)
-
-
-
-
